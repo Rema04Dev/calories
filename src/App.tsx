@@ -1,4 +1,5 @@
 import Gender from './components/Gender';
+import Parameters from './components/Parameters';
 
 const App = () => {
   return (
@@ -9,6 +10,7 @@ const App = () => {
           <form className="counter__form form" name="counter">
             {/* INPUTS */}
             <Gender />
+            <Parameters />
           </form>
           <section className="counter__result counter__result--hidden">
             <h2 className="heading">Ваша норма калорий</h2>
