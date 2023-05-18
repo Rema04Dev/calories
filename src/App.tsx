@@ -1,13 +1,64 @@
+import { useState } from 'react';
 import Activity from './components/Activity/Activity';
 import Gender from './components/Gender/Gender';
 import Parameters from './components/Parameters/Parameters';
-import { useForm } from 'react-hook-form';
+import { useForm, SubmitHandler } from 'react-hook-form';
 
+type TGender = 'male' | 'female';
+type TActivity = 'min' | 'low' | 'medium' | 'high' | 'maximal';
+
+interface IFormValues {
+  gender: TGender;
+  age: string;
+  height: string;
+  weight: string;
+  activity: TActivity;
+}
 const App = () => {
-  const { register, handleSubmit } = useForm();
-  const onSubmitHandler = (values: any) => {
-    console.log(values);
+  const [calories, setCalories] = useState(null);
+
+  const { register, handleSubmit } = useForm<IFormValues>({
+    defaultValues: {
+      gender: 'female',
+      age: '',
+      height: '',
+      weight: '',
+      activity: 'medium',
+    },
+  });
+  const onSubmitHandler = (data) => {
+    const { gender, age, height, weight, activity } = data;
+    const baseN = 10 * Number(weight) + 6.25 * Number(height) - 5 * Number(age);
+    let N;
+    switch (gender) {
+      case 'male':
+        N = baseN + 5;
+        break;
+      case 'female':
+        N = baseN - 161;
+        break;
+      default:
+        return null;
+    }
+
+    const coefficientMapping = {
+      min: 1.2,
+      low: 1.375,
+      medium: 1.55,
+      high: 1.725,
+      maximal: 1.9,
+    };
+    const normal = N * coefficientMapping[activity];
+    const percentage = (normal / 100) * 15;
+    const result = {
+      weightMaintenance: Math.floor(normal),
+      gainWeight: Math.floor(normal + percentage),
+      loseWeight: Math.floor(normal - percentage),
+    };
+
+    setCalories(result);
   };
+
   return (
     <main className="main">
       <div className="container">
@@ -47,29 +98,35 @@ const App = () => {
               </button>
             </div>
           </form>
-          <section className="counter__result counter__result--hidden">
-            <h2 className="heading">Ваша норма калорий</h2>
-            <ul className="counter__result-list">
-              <li className="counter__result-item">
-                <h3>
-                  <span id="calories-norm">3 800</span> ккал
-                </h3>
-                <p>поддержание веса</p>
-              </li>
-              <li className="counter__result-item">
-                <h3>
-                  <span id="calories-minimal">3 300</span> ккал
-                </h3>
-                <p>снижение веса</p>
-              </li>
-              <li className="counter__result-item">
-                <h3>
-                  <span id="calories-maximal">4 000</span> ккал
-                </h3>
-                <p>набор веса</p>
-              </li>
-            </ul>
-          </section>
+          {/* counter__result--hidden */}
+          {calories && (
+            <section className="counter__result">
+              <h2 className="heading">Ваша норма калорий</h2>
+              <ul className="counter__result-list">
+                <li className="counter__result-item">
+                  <h3>
+                    <span id="calories-norm">{calories.weightMaintenance}</span>
+                    ккал
+                  </h3>
+                  <p>поддержание веса</p>
+                </li>
+                <li className="counter__result-item">
+                  <h3>
+                    <span id="calories-minimal">{calories.loseWeight}</span>{' '}
+                    ккал
+                  </h3>
+                  <p>снижение веса</p>
+                </li>
+                <li className="counter__result-item">
+                  <h3>
+                    <span id="calories-maximal">{calories.gainWeight}</span>{' '}
+                    ккал
+                  </h3>
+                  <p>набор веса</p>
+                </li>
+              </ul>
+            </section>
+          )}
         </article>
       </div>
     </main>
