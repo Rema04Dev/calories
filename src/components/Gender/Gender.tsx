@@ -1,10 +1,15 @@
 import { FC } from 'react';
 import GenderInput from './GenderInput';
+import { UseFormRegister, FieldValues } from 'react-hook-form';
 export enum GenderIds {
   GENDER_MALE = 'gender-male',
   GENDER_FEMALE = 'gender-female',
 }
-const Gender: FC = () => {
+
+interface GenderProps {
+  register: UseFormRegister<FieldValues>;
+}
+const Gender: FC<GenderProps> = ({ register }) => {
   return (
     <div className="form__item">
       <h2 className="heading">Пол</h2>
@@ -12,17 +17,17 @@ const Gender: FC = () => {
         <li className="switcher__item">
           <GenderInput
             id={GenderIds.GENDER_MALE}
-            name="gender"
             value="male"
             label="Мужчина"
+            register={register}
           />
         </li>
         <li className="switcher__item">
           <GenderInput
-            id={GenderIds.GENDER_MALE}
-            name="female"
+            id={GenderIds.GENDER_FEMALE}
             value="female"
             label="Женщина"
+            register={register}
           />
         </li>
       </ul>

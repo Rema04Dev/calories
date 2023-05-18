@@ -1,16 +1,23 @@
 import { FC } from 'react';
 import { GenderIds } from './Gender';
+import { UseFormRegister, FieldValues } from 'react-hook-form';
+
 interface GenderInputProps {
   id: GenderIds;
-  name: string;
   value: string;
   label: string;
-  checked?: boolean;
+  register: UseFormRegister<FieldValues>;
 }
-const GenderInput: FC<GenderInputProps> = ({ id, name, value, label }) => {
+const GenderInput: FC<GenderInputProps> = ({ id, value, label, register }) => {
   return (
     <>
-      <input id={id} name={name} type="radio" value={value} required />
+      <input
+        {...register('gender')}
+        id={id}
+        type="radio"
+        value={value}
+        required
+      />
       <label htmlFor={id}>{label}</label>
     </>
   );

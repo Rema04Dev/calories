@@ -1,10 +1,12 @@
 import { FC } from 'react';
+import { FieldValues, UseFormRegister } from 'react-hook-form';
 
 interface ParameterInputProps {
   id: string;
   name: string;
   label: string;
   sublabel: string;
+  register: UseFormRegister<FieldValues>;
 }
 
 const ParameterInput: FC<ParameterInputProps> = ({
@@ -12,6 +14,7 @@ const ParameterInput: FC<ParameterInputProps> = ({
   name,
   label,
   sublabel,
+  register,
 }) => {
   return (
     <div className="input">
@@ -23,9 +26,9 @@ const ParameterInput: FC<ParameterInputProps> = ({
       </div>
       <div className="input__wrapper">
         <input
+          {...register(name)}
           type="text"
           id={id}
-          name={name}
           placeholder="0"
           inputMode="decimal"
           // maxLength="3"

@@ -1,17 +1,26 @@
 import Activity from './components/Activity/Activity';
 import Gender from './components/Gender/Gender';
 import Parameters from './components/Parameters/Parameters';
+import { useForm } from 'react-hook-form';
 
 const App = () => {
+  const { register, handleSubmit } = useForm();
+  const onSubmitHandler = (values: any) => {
+    console.log(values);
+  };
   return (
     <main className="main">
       <div className="container">
         <article className="counter">
           <h1 className="counter__heading heading-main">Счётчик калорий</h1>
-          <form className="counter__form form" name="counter">
-            <Gender />
-            <Parameters />
-            <Activity />
+          <form
+            onSubmit={handleSubmit(onSubmitHandler)}
+            className="counter__form form"
+            name="counter"
+          >
+            <Gender register={register} />
+            <Parameters register={register} />
+            <Activity register={register} />
             <div className="form__submit">
               <button
                 className="form__submit-button button"
