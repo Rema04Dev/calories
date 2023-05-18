@@ -9,7 +9,6 @@ const App = () => {
         <article className="counter">
           <h1 className="counter__heading heading-main">Счётчик калорий</h1>
           <form className="counter__form form" name="counter">
-            {/* INPUTS */}
             <Gender />
             <Parameters />
             <Activity />

@@ -1,29 +1,29 @@
 import { FC } from 'react';
-
+import GenderInput from './GenderInput';
+export enum GenderIds {
+  GENDER_MALE = 'gender-male',
+  GENDER_FEMALE = 'gender-female',
+}
 const Gender: FC = () => {
   return (
     <div className="form__item">
       <h2 className="heading">Пол</h2>
       <ul className="switcher">
         <li className="switcher__item">
-          <input
-            id="gender-male"
+          <GenderInput
+            id={GenderIds.GENDER_MALE}
             name="gender"
-            type="radio"
             value="male"
-            required
+            label="Мужчина"
           />
-          <label htmlFor="gender-male"> Мужчина </label>
         </li>
         <li className="switcher__item">
-          <input
-            id="gender-female"
-            name="gender"
-            type="radio"
+          <GenderInput
+            id={GenderIds.GENDER_MALE}
+            name="female"
             value="female"
-            required
+            label="Женщина"
           />
-          <label htmlFor="gender-female"> Женщина </label>
         </li>
       </ul>
     </div>
