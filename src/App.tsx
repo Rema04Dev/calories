@@ -1,6 +1,6 @@
-import Activity from './components/Activity';
-import Gender from './components/Gender';
-import Parameters from './components/Parameters';
+import Activity from './components/Activity/Activity';
+import Gender from './components/Gender/Gender';
+import Parameters from './components/Parameters/Parameters';
 
 const App = () => {
   return (
