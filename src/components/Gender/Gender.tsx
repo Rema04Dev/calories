@@ -1,14 +1,8 @@
 import { FC } from 'react';
 import GenderInput from './GenderInput';
-import { UseFormRegister, FieldValues } from 'react-hook-form';
-export enum GenderIds {
-  GENDER_MALE = 'gender-male',
-  GENDER_FEMALE = 'gender-female',
-}
+import { GenderProps } from './types';
+import { GenderIds } from './types';
 
-interface GenderProps {
-  register: UseFormRegister<FieldValues>;
-}
 const Gender: FC<GenderProps> = ({ register }) => {
   return (
     <div className="form__item">

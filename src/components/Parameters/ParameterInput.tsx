@@ -1,13 +1,5 @@
 import { FC } from 'react';
-import { FieldValues, UseFormRegister } from 'react-hook-form';
-
-interface ParameterInputProps {
-  id: string;
-  name: string;
-  label: string;
-  sublabel: string;
-  register: UseFormRegister<FieldValues>;
-}
+import { ParameterInputProps } from './types';
 
 const ParameterInput: FC<ParameterInputProps> = ({
   id,
@@ -15,7 +7,10 @@ const ParameterInput: FC<ParameterInputProps> = ({
   label,
   sublabel,
   register,
+  formState,
 }) => {
+  const { errors } = formState;
+  console.log(name);
   return (
     <div className="input">
       <div className="input__heading">
@@ -32,10 +27,10 @@ const ParameterInput: FC<ParameterInputProps> = ({
           placeholder="0"
           inputMode="decimal"
           // maxLength="3"
-          required
           autoComplete="off"
         />
       </div>
+      {errors[name]?.message}
     </div>
   );
 };

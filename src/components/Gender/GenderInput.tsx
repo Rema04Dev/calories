@@ -1,13 +1,6 @@
 import { FC } from 'react';
-import { GenderIds } from './Gender';
-import { UseFormRegister, FieldValues } from 'react-hook-form';
+import { GenderInputProps } from './types';
 
-interface GenderInputProps {
-  id: GenderIds;
-  value: string;
-  label: string;
-  register: UseFormRegister<FieldValues>;
-}
 const GenderInput: FC<GenderInputProps> = ({ id, value, label, register }) => {
   return (
     <>

@@ -1,11 +1,8 @@
 import { FC } from 'react';
 import ActivityInput from './ActivityInput';
-import { FieldValues, UseFormRegister } from 'react-hook-form';
+import { IActivityProps } from './types';
 
-interface ActivityProps {
-  register: UseFormRegister<FieldValues>;
-}
-const Activity: FC<ActivityProps> = ({ register }) => {
+const Activity: FC<IActivityProps> = ({ register }) => {
   return (
     <fieldset className="form__item">
       <legend className="heading">Физическая активность</legend>

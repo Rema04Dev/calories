@@ -2,22 +2,35 @@ import { useState } from 'react';
 import Activity from './components/Activity/Activity';
 import Gender from './components/Gender/Gender';
 import Parameters from './components/Parameters/Parameters';
-import { useForm, SubmitHandler } from 'react-hook-form';
-
+import { useForm } from 'react-hook-form';
+import * as Yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
 type TGender = 'male' | 'female';
 type TActivity = 'min' | 'low' | 'medium' | 'high' | 'maximal';
 
-interface IFormValues {
+export interface IFormValues {
   gender: TGender;
   age: string;
   height: string;
   weight: string;
   activity: TActivity;
 }
-const App = () => {
-  const [calories, setCalories] = useState(null);
 
-  const { register, handleSubmit } = useForm<IFormValues>({
+interface ICalories {
+  weightMaintenance: number;
+  gainWeight: number;
+  loseWeight: number;
+}
+const App = () => {
+  const [calories, setCalories] = useState<ICalories | null>(null);
+  const schema = Yup.object({
+    gender: Yup.string().required(),
+    age: Yup.string().required(),
+    height: Yup.string().required(),
+    weight: Yup.string().required(),
+    activity: Yup.string().required(),
+  });
+  const { register, handleSubmit, formState } = useForm<IFormValues>({
     defaultValues: {
       gender: 'female',
       age: '',
@@ -25,8 +38,10 @@ const App = () => {
       weight: '',
       activity: 'medium',
     },
+    resolver: yupResolver(schema),
   });
-  const onSubmitHandler = (data) => {
+
+  const onSubmitHandler = (data: IFormValues) => {
     const { gender, age, height, weight, activity } = data;
     const baseN = 10 * Number(weight) + 6.25 * Number(height) - 5 * Number(age);
     let N;
@@ -70,7 +85,7 @@ const App = () => {
             name="counter"
           >
             <Gender register={register} />
-            <Parameters register={register} />
+            <Parameters register={register} formState={formState} />
             <Activity register={register} />
             <div className="form__submit">
               <button

@@ -1,15 +1,7 @@
 import { FC } from 'react';
-import { FieldValues, UseFormRegister } from 'react-hook-form';
+import { IActivityInputProps } from './types';
 
-interface ActivityInputProps {
-  id: string;
-  value: string;
-  label: string;
-  description: string;
-  register: UseFormRegister<FieldValues>;
-}
-
-const ActivityInput: FC<ActivityInputProps> = ({
+const ActivityInput: FC<IActivityInputProps> = ({
   id,
   value,
   label,

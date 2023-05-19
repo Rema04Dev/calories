@@ -1,11 +1,8 @@
 import { FC } from 'react';
 import ParameterInput from './ParameterInput';
-import { UseFormRegister, FieldValues } from 'react-hook-form';
+import { ParametersProps } from './types';
 
-interface ParametersProps {
-  register: UseFormRegister<FieldValues>;
-}
-const Parameters: FC<ParametersProps> = ({ register }) => {
+const Parameters: FC<ParametersProps> = ({ register, formState }) => {
   return (
     <fieldset className="form__item form__parameters" name="parameters">
       <legend className="visually-hidden">Физические параметры</legend>
@@ -16,6 +13,7 @@ const Parameters: FC<ParametersProps> = ({ register }) => {
           name="age"
           label="Возраст"
           sublabel="лет"
+          formState={formState}
         />
         <ParameterInput
           register={register}
@@ -23,6 +21,7 @@ const Parameters: FC<ParametersProps> = ({ register }) => {
           name="height"
           label="Рост"
           sublabel="см"
+          formState={formState}
         />
         <ParameterInput
           register={register}
@@ -30,6 +29,7 @@ const Parameters: FC<ParametersProps> = ({ register }) => {
           name="weight"
           label="Вес"
           sublabel="кг"
+          formState={formState}
         />
       </div>
     </fieldset>
