@@ -22,7 +22,7 @@ const ParameterInput: FC<ParameterInputProps> = ({
       <div className="input__wrapper">
         <input
           {...register(name)}
-          type="text"
+          type="number"
           id={id}
           placeholder="0"
           inputMode="decimal"

@@ -1,8 +1,11 @@
 import { FC } from 'react';
 import ParameterInput from './ParameterInput';
 import { ParametersProps } from './types';
+import { useTranslation } from 'react-i18next';
 
 const Parameters: FC<ParametersProps> = ({ register, formState }) => {
+  const { t } = useTranslation();
+
   return (
     <fieldset className="form__item form__parameters" name="parameters">
       <legend className="visually-hidden">Физические параметры</legend>
@@ -11,24 +14,24 @@ const Parameters: FC<ParametersProps> = ({ register, formState }) => {
           register={register}
           id="age"
           name="age"
-          label="Возраст"
-          sublabel="лет"
+          label={t('parameters.age.heading')}
+          sublabel={t('parameters.age.suffix')}
           formState={formState}
         />
         <ParameterInput
           register={register}
           id="height"
           name="height"
-          label="Рост"
-          sublabel="см"
+          label={t('parameters.height.heading')}
+          sublabel={t('parameters.height.suffix')}
           formState={formState}
         />
         <ParameterInput
           register={register}
           id="weight"
           name="weight"
-          label="Вес"
-          sublabel="кг"
+          label={t('parameters.weight.heading')}
+          sublabel={t('parameters.weight.suffix')}
           formState={formState}
         />
       </div>
