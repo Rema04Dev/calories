@@ -1,5 +1,5 @@
 import { UseFormRegister, FormState } from 'react-hook-form';
-import { IFormValues } from '../../App';
+import { IFormValues } from '../../types';
 
 export interface ParametersProps {
   register: UseFormRegister<IFormValues>;
@@ -11,6 +11,6 @@ export interface ParameterInputProps {
   name: string;
   label: string;
   sublabel: string;
-  register: UseFormRegister<IFormValues>;
-  formState: FormState<IFormValues>;
+  register: UseFormRegister<IFormValues> | any;
+  formState: FormState<IFormValues> | any;
 }

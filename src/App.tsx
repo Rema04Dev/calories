@@ -21,7 +21,7 @@ const App = () => {
   });
   const { register, handleSubmit, formState } = useForm<IFormValues>({
     defaultValues: {
-      gender: 'female',
+      gender: 'male',
       age: '',
       height: '',
       weight: '',
