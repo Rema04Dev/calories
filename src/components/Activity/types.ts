@@ -1,5 +1,5 @@
-import { FieldValues, UseFormRegister } from 'react-hook-form';
-import { IFormValues } from '../../App';
+import { UseFormRegister } from 'react-hook-form';
+import { IFormValues } from '../../types';
 
 export interface IActivityProps {
   register: UseFormRegister<IFormValues>;

@@ -7,7 +7,7 @@ import Activity from './components/Activity/Activity';
 import Gender from './components/Gender/Gender';
 import Parameters from './components/Parameters/Parameters';
 
-import { ICalories, IFormValues } from './types';
+import { Coefficients, ICalories, IFormValues } from './types';
 
 const App = () => {
   const { t } = useTranslation();
@@ -45,14 +45,7 @@ const App = () => {
         return null;
     }
 
-    const coefficientMapping = {
-      min: 1.2,
-      low: 1.375,
-      medium: 1.55,
-      high: 1.725,
-      maximal: 1.9,
-    };
-    const normal = N * coefficientMapping[activity];
+    const normal = N * Coefficients[activity];
     const result = {
       weightMaintenance: Math.floor(normal),
       gainWeight: Math.floor(normal * 1.15),

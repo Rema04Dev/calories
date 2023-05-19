@@ -1,5 +1,5 @@
 import { UseFormRegister } from 'react-hook-form';
-import { IFormValues } from '../../App';
+import { IFormValues } from '../../types';
 export enum GenderIds {
   GENDER_MALE = 'gender-male',
   GENDER_FEMALE = 'gender-female',

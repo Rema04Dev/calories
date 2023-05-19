@@ -10,7 +10,6 @@ const ParameterInput: FC<ParameterInputProps> = ({
   formState,
 }) => {
   const { errors } = formState;
-  console.log(name);
   return (
     <div className="input">
       <div className="input__heading">
