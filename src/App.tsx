@@ -121,28 +121,30 @@ const App = () => {
           {/* counter__result--hidden */}
           {calories && (
             <section className="counter__result">
-              <h2 className="heading">Ваша норма калорий</h2>
+              <h2 className="heading">{t('result.heading')}</h2>
               <ul className="counter__result-list">
                 <li className="counter__result-item">
                   <h3>
-                    <span id="calories-norm">{calories.weightMaintenance}</span>
-                    ккал
+                    <span id="calories-norm">
+                      {calories.weightMaintenance}{' '}
+                    </span>
+                    {t('result.suffix')}
                   </h3>
-                  <p>поддержание веса</p>
+                  <p>{t('result.weightMaintenance')}</p>
                 </li>
                 <li className="counter__result-item">
                   <h3>
                     <span id="calories-minimal">{calories.loseWeight}</span>{' '}
-                    ккал
+                    {t('result.suffix')}
                   </h3>
-                  <p>снижение веса</p>
+                  <p>{t('result.loseWeight')}</p>
                 </li>
                 <li className="counter__result-item">
                   <h3>
                     <span id="calories-maximal">{calories.gainWeight}</span>{' '}
-                    ккал
+                    {t('result.suffix')}
                   </h3>
-                  <p>набор веса</p>
+                  <p>{t('result.gainWeight')}</p>
                 </li>
               </ul>
             </section>

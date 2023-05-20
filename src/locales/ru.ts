@@ -47,6 +47,13 @@ const ru = {
       submit: 'Рассчитать',
       reset: 'Очистить поля и расчёт',
     },
+    result: {
+      heading: 'Ваша норма калорий',
+      suffix: 'ккал',
+      weightMaintenance: 'поддержание веса',
+      loseWeight: 'снижение веса',
+      gainWeight: 'набор веса',
+    },
   },
 };
 
