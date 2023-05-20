@@ -21,16 +21,17 @@ const App = () => {
       'Выберите уровень вашей физической активности'
     ),
   });
-  const { register, handleSubmit, formState, watch } = useForm<IFormValues>({
-    defaultValues: {
-      gender: 'male',
-      age: '',
-      height: '',
-      weight: '',
-      activity: 'min',
-    },
-    resolver: yupResolver(schema),
-  });
+  const { register, handleSubmit, formState, watch, reset } =
+    useForm<IFormValues>({
+      defaultValues: {
+        gender: 'male',
+        age: '',
+        height: '',
+        weight: '',
+        activity: 'min',
+      },
+      resolver: yupResolver(schema),
+    });
 
   const watchedFields = watch(['age', 'height', 'weight']);
 
@@ -60,8 +61,9 @@ const App = () => {
   };
   console.log(watchedFields);
 
-  const isNotDisable = watchedFields.every((field) => field);
-
+  const isNotDisableSubmit = watchedFields.every((field) => field);
+  const isNotDisableReset = watchedFields.some((filed) => filed);
+  console.log(isNotDisableReset);
   return (
     <main className="main">
       <div className="container">
@@ -80,11 +82,25 @@ const App = () => {
                 className="form__submit-button button"
                 name="submit"
                 type="submit"
-                disabled={!isNotDisable}
+                disabled={!isNotDisableSubmit}
               >
                 {t('form.submit')}
               </button>
-              <button className="form__reset-button" name="reset" type="reset">
+              <button
+                disabled={!isNotDisableReset}
+                onClick={() => {
+                  reset({
+                    gender: 'male',
+                    age: '',
+                    height: '',
+                    weight: '',
+                    activity: 'min',
+                  });
+                }}
+                className="form__reset-button"
+                name="reset"
+                type="button"
+              >
                 <svg
                   width="24"
                   height="24"

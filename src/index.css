@@ -133,11 +133,11 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   margin: 0;
 
-  /* appearance: none; */
+  appearance: none;
 }
 
 /* ios inputs reset */
-/* select,
+select,
 textarea,
 input:matches([type="email"],
   [type="number"],
@@ -147,7 +147,7 @@ input:matches([type="email"],
   [type="text"],
   [type="url"]) {
   appearance: none;
-} */
+}
 
 input[type="number"] {
   appearance: textfield;
