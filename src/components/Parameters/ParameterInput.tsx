@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { ParameterInputProps } from './types';
-
+import { useTranslation } from 'react-i18next';
 const ParameterInput: FC<ParameterInputProps> = ({
   id,
   name,
@@ -10,6 +10,7 @@ const ParameterInput: FC<ParameterInputProps> = ({
   formState,
 }) => {
   const { errors } = formState;
+  const { t } = useTranslation();
   return (
     <div className="input">
       <div className="input__heading">
@@ -27,9 +28,12 @@ const ParameterInput: FC<ParameterInputProps> = ({
           inputMode="decimal"
           // maxLength="3"
           autoComplete="off"
+          className={errors[name]?.message && 'invalid-input'}
         />
       </div>
-      {errors[name]?.message}
+      <span className="feedback">
+        {errors[name]?.message && t(`form.errors.${errors[name]?.message}`)}
+      </span>
     </div>
   );
 };

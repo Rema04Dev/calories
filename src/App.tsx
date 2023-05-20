@@ -7,7 +7,7 @@ import Activity from './components/Activity/Activity';
 import Gender from './components/Gender/Gender';
 import Parameters from './components/Parameters/Parameters';
 
-import { Coefficients, ICalories, IFormValues } from './types';
+import { ICalories, IFormValues } from './types';
 import calculateCalories from './utils/calculateCalories';
 
 const App = () => {
@@ -15,35 +15,29 @@ const App = () => {
   const [calories, setCalories] = useState<ICalories | null>(null);
   const schema = Yup.object({
     gender: Yup.string().required('Выберите пол'),
-    age: Yup.string().required('Введите ваш возраст'),
-    height: Yup.string().required('Введите ваш рост'),
-    weight: Yup.string().required('Введите ваш вес'),
+    age: Yup.string().required('ageRequired'),
+    height: Yup.string().required('heightRequired'),
+    weight: Yup.string().required('weightRequired'),
     activity: Yup.string().required(
       'Выберите уровень вашей физической активности'
     ),
   });
-  const { register, handleSubmit, formState, watch, reset } =
-    useForm<IFormValues>({
-      defaultValues: {
-        gender: 'male',
-        age: '',
-        height: '',
-        weight: '',
-        activity: 'min',
-      },
-      resolver: yupResolver(schema),
-    });
-
-  const watchedFields = watch(['age', 'height', 'weight']);
+  const { register, handleSubmit, formState, reset } = useForm<IFormValues>({
+    defaultValues: {
+      gender: 'male',
+      age: '',
+      height: '',
+      weight: '',
+      activity: 'min',
+    },
+    resolver: yupResolver(schema),
+  });
 
   const onSubmitHandler = (data: IFormValues) => {
     const result = calculateCalories(data);
     setCalories(result);
   };
 
-  const isNotDisableSubmit = watchedFields.every((field) => field);
-  const isNotDisableReset = watchedFields.some((filed) => filed);
-  console.log(isNotDisableReset);
   return (
     <main className="main">
       <div className="container">
@@ -62,25 +56,10 @@ const App = () => {
                 className="form__submit-button button"
                 name="submit"
                 type="submit"
-                disabled={!isNotDisableSubmit}
               >
                 {t('form.submit')}
               </button>
-              <button
-                disabled={!isNotDisableReset}
-                onClick={() => {
-                  reset({
-                    gender: 'male',
-                    age: '',
-                    height: '',
-                    weight: '',
-                    activity: 'min',
-                  });
-                }}
-                className="form__reset-button"
-                name="reset"
-                type="button"
-              >
+              <button className="form__reset-button" name="reset" type="button">
                 <svg
                   width="24"
                   height="24"
@@ -98,9 +77,9 @@ const App = () => {
               </button>
             </div>
           </form>
-          {/* counter__result--hidden */}
           {calories && (
             <section className="counter__result">
+              {/* counter__result--hidden */}
               <h2 className="heading">{t('result.heading')}</h2>
               <ul className="counter__result-list">
                 <li className="counter__result-item">

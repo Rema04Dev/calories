@@ -3,6 +3,7 @@ import GenderInput from './GenderInput';
 import { GenderProps } from './types';
 import { GenderIds } from './types';
 import { useTranslation } from 'react-i18next';
+import './style.css';
 
 const Gender: FC<GenderProps> = ({ register }) => {
   const { t } = useTranslation();
