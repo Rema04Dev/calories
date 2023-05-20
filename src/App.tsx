@@ -8,6 +8,7 @@ import Gender from './components/Gender/Gender';
 import Parameters from './components/Parameters/Parameters';
 
 import { Coefficients, ICalories, IFormValues } from './types';
+import calculateCalories from './utils/calculateCalories';
 
 const App = () => {
   const { t } = useTranslation();
@@ -36,30 +37,9 @@ const App = () => {
   const watchedFields = watch(['age', 'height', 'weight']);
 
   const onSubmitHandler = (data: IFormValues) => {
-    const { gender, age, height, weight, activity } = data;
-    const baseN = 10 * Number(weight) + 6.25 * Number(height) - 5 * Number(age);
-    let N;
-    switch (gender) {
-      case 'male':
-        N = baseN + 5;
-        break;
-      case 'female':
-        N = baseN - 161;
-        break;
-      default:
-        return null;
-    }
-
-    const normal = N * Coefficients[activity];
-    const result = {
-      weightMaintenance: Math.floor(normal),
-      gainWeight: Math.floor(normal * 1.15),
-      loseWeight: Math.floor(normal * 0.85),
-    };
-
+    const result = calculateCalories(data);
     setCalories(result);
   };
-  console.log(watchedFields);
 
   const isNotDisableSubmit = watchedFields.every((field) => field);
   const isNotDisableReset = watchedFields.some((filed) => filed);
