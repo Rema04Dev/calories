@@ -46,6 +46,11 @@ const ru = {
     form: {
       submit: 'Рассчитать',
       reset: 'Очистить поля и расчёт',
+      errors: {
+        ageRequired: 'Введите ваш возраст',
+        heightRequired: 'Введите ваш рост',
+        weightRequired: 'Введите ваш вес',
+      },
     },
     result: {
       heading: 'Ваша норма калорий',

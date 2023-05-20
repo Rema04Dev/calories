@@ -2,7 +2,7 @@ import { FC } from 'react';
 import ParameterInput from './ParameterInput';
 import { ParametersProps } from './types';
 import { useTranslation } from 'react-i18next';
-
+import './style.css';
 const Parameters: FC<ParametersProps> = ({ register, formState }) => {
   const { t } = useTranslation();
 

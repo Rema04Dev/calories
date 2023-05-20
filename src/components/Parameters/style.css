@@ -1,0 +1,91 @@
+.form__parameters {
+    margin-bottom: 34px;
+  }
+
+  .inputs-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin: 0;
+    padding: 0;
+  
+    list-style: none;
+  }
+  
+  .inputs-group .input:nth-child(2) {
+    margin-left: 47px;
+    margin-right: auto;
+  }
+  
+  .input {
+    width: fit-content;
+  }
+  
+  .input__heading {
+    display: flex;
+    align-items: flex-end;
+    margin: 0;
+    margin-bottom: 12px;
+  }
+  
+  .input__heading label {
+    cursor: pointer;
+  }
+  
+  .input__heading-unit {
+    margin: 0;
+    margin-left: 6px;
+  
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 30px;
+    color: var(--color-gray);
+  }
+
+  .input__wrapper {
+    display: flex;
+    width: 80px;
+    margin: 0;
+  }
+  
+  .input__wrapper input {
+    width: 100%;
+    margin: 0;
+    padding: 10px 5px;
+  
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 23px;
+    text-align: center;
+    color: var(--color-text-black);
+  
+    outline: none;
+    border-radius: 4px;
+    border: 0.5px solid currentColor;
+    background: transparent;
+  
+    transition: 0.3s ease;
+    transition-property: color, border;
+  }
+  
+  .input__wrapper input::placeholder {
+    color: var(--color-gray-darkest);
+  
+    transition: 0.3s ease;
+    transition-property: color;
+  }
+  
+  .input__wrapper input:hover,
+  .input__wrapper input:active,
+  .input__wrapper input:focus {
+    border-color: var(--color-accent);
+  }
+  
+  .input__wrapper input:hover::placeholder,
+  .input__wrapper input:active::placeholder {
+    color: var(--color-text-black);
+  }
+  
+  .input__wrapper input:focus::placeholder {
+    color: transparent;
+  }

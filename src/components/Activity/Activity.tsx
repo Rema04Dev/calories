@@ -2,6 +2,7 @@ import { FC } from 'react';
 import ActivityInput from './ActivityInput';
 import { IActivityProps } from './types';
 import { useTranslation } from 'react-i18next';
+import './style.css';
 const Activity: FC<IActivityProps> = ({ register }) => {
   const { t } = useTranslation();
 
