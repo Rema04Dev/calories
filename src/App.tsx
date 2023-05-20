@@ -13,22 +13,26 @@ const App = () => {
   const { t } = useTranslation();
   const [calories, setCalories] = useState<ICalories | null>(null);
   const schema = Yup.object({
-    gender: Yup.string().required(),
-    age: Yup.string().required(),
-    height: Yup.string().required(),
-    weight: Yup.string().required(),
-    activity: Yup.string().required(),
+    gender: Yup.string().required('Выберите пол'),
+    age: Yup.string().required('Введите ваш возраст'),
+    height: Yup.string().required('Введите ваш рост'),
+    weight: Yup.string().required('Введите ваш вес'),
+    activity: Yup.string().required(
+      'Выберите уровень вашей физической активности'
+    ),
   });
-  const { register, handleSubmit, formState } = useForm<IFormValues>({
+  const { register, handleSubmit, formState, watch } = useForm<IFormValues>({
     defaultValues: {
       gender: 'male',
       age: '',
       height: '',
       weight: '',
-      activity: 'medium',
+      activity: 'min',
     },
     resolver: yupResolver(schema),
   });
+
+  const watchedFields = watch(['age', 'height', 'weight']);
 
   const onSubmitHandler = (data: IFormValues) => {
     const { gender, age, height, weight, activity } = data;
@@ -54,6 +58,9 @@ const App = () => {
 
     setCalories(result);
   };
+  console.log(watchedFields);
+
+  const isNotDisable = watchedFields.every((field) => field);
 
   return (
     <main className="main">
@@ -73,6 +80,7 @@ const App = () => {
                 className="form__submit-button button"
                 name="submit"
                 type="submit"
+                disabled={!isNotDisable}
               >
                 {t('form.submit')}
               </button>
