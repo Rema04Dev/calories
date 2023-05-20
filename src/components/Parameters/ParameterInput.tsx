@@ -25,8 +25,9 @@ const ParameterInput: FC<ParameterInputProps> = ({
           id={id}
           placeholder="0"
           inputMode="decimal"
-          // maxLength="3"
+          maxLength="3"
           autoComplete="off"
+          min={1}
         />
       </div>
       {errors[name]?.message}
