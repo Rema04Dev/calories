@@ -42,7 +42,10 @@ const App = () => {
     <main className="main">
       <div className="container">
         <article className="counter">
-          <h1 className="counter__heading heading-main">{t('heading')}</h1>
+          <h1 data-testid="title" className="counter__heading heading-main">
+            {t('heading')}
+          </h1>
+          <h2 data-testid="title-2">Hello</h2>
           <form
             onSubmit={handleSubmit(onSubmitHandler)}
             className="counter__form form"

@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest';
+import { describe, expect } from 'vitest';
 import calculateCalories from './calculateCalories';
 import { ICalories, IFormValues } from '../types';
 

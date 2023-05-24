@@ -5,7 +5,7 @@ import i18next from 'i18next';
 import { I18nextProvider, initReactI18next } from 'react-i18next';
 import resources from './locales/index';
 
-const i18n = i18next.createInstance();
+export const i18n = i18next.createInstance();
 i18n.use(initReactI18next).init({
   resources,
   lng: 'ru',
