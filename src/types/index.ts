@@ -22,3 +22,10 @@ export enum Coefficients {
   high = 1.725,
   maximal = 1.9,
 }
+
+export type TThemeProviderMode = 'light' | 'dark';
+
+export interface IThemeContext {
+  theme: TThemeProviderMode;
+  toggleTheme?: () => void;
+}

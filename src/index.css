@@ -383,3 +383,47 @@ input[type="number"] {
 .invalid-input {
   border: 2px solid var(--color-warning);
 }
+
+/* DARK MODE */
+
+/* :root {
+  --color-gray-darkest: #7b7b7b;
+  --color-gray-dark: #7e7e7e;
+  --color-gray: #9e9e9e;
+  --color-gray-light: #bdbdbd;
+  --color-gray-lighter: #d1d1d1;
+  --color-gray-lightest: #dcdcdc;
+  --color-text-black: #000000;
+  --color-text-white: #ffffff;
+  --color-background-main: #ffffff;
+  --color-accent: #fd7d36;
+  --color-accent-hover: #ff9e68;
+  --color-accent-active: #ff7528;
+  --color-warning: #fd3636;
+  --color-warning-hover: #ff8484;
+} */
+
+:root {
+  --dark-mode-color-accent: red
+}
+
+.switch {
+  display: flex;
+  width: 100vw;
+  height: 100px;
+  justify-content: center;
+  align-items: center;
+}
+
+#dark.main {  
+  background-image: url("./assets/img/main-background.jpg");
+  background-color: var(--color-text-black);
+  color: red
+}
+
+#dark .counter__form,
+#dark .counter__result {
+  padding: 32px 32px;
+
+  background-color: var(--color-text-black);
+}

@@ -6,9 +6,10 @@ import { useTranslation } from 'react-i18next';
 import Activity from './components/Activity/Activity';
 import Gender from './components/Gender/Gender';
 import Parameters from './components/Parameters/Parameters';
-
+import ReactSwitch from 'react-switch';
 import { ICalories, IFormValues } from './types';
 import calculateCalories from './utils/calculateCalories';
+import useTheme from './hooks/useTheme';
 
 const App = () => {
   const { t } = useTranslation();
@@ -38,14 +39,19 @@ const App = () => {
     setCalories(result);
   };
 
+  const { theme, toggleTheme } = useTheme();
+  console.log(useTheme());
   return (
-    <main className="main">
+    <main className="main" id={theme}>
       <div className="container">
+        <div className="switch">
+          <button onChange={() => toggleTheme()}>CHANGE</button>
+        </div>
+
         <article className="counter">
           <h1 data-testid="title" className="counter__heading heading-main">
             {t('heading')}
           </h1>
-          <h2 data-testid="title-2">Hello</h2>
           <form
             onSubmit={handleSubmit(onSubmitHandler)}
             className="counter__form form"
