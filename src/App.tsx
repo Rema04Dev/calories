@@ -44,14 +44,11 @@ const App = () => {
   return (
     <main className="main" id={theme}>
       <div className="container">
-        <div className="switch">
-          <button onChange={() => toggleTheme()}>CHANGE</button>
-        </div>
-
         <article className="counter">
           <h1 data-testid="title" className="counter__heading heading-main">
             {t('heading')}
           </h1>
+          <ReactSwitch onChange={toggleTheme} checked={theme === 'light'} />
           <form
             onSubmit={handleSubmit(onSubmitHandler)}
             className="counter__form form"
