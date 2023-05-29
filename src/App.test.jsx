@@ -22,4 +22,3 @@ describe('App', () => {
     expect(screen.getByTestId('title')).toHaveTextContent(i18n.t('heading'));
   });
 });
-// expect(screen.getByTestId('title')).toHaveTextContent(i18n.t('heading'));
