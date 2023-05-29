@@ -37,6 +37,16 @@ const App = () => {
     setCalories(result);
   };
 
+  const resetForm = () => {
+    reset(() => ({
+      gender: 'male',
+      age: '',
+      height: '',
+      weight: '',
+      activity: 'min',
+    }));
+    setCalories(null);
+  };
   // const { theme, toggleTheme } = useTheme();
   return (
     <main className="main" /*id={theme}*/>
@@ -62,7 +72,12 @@ const App = () => {
               >
                 {t('form.submit')}
               </button>
-              <button className="form__reset-button" name="reset" type="button">
+              <button
+                onClick={resetForm}
+                className="form__reset-button"
+                name="reset"
+                type="button"
+              >
                 <svg
                   width="24"
                   height="24"
