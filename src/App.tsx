@@ -6,10 +6,8 @@ import { useTranslation } from 'react-i18next';
 import Activity from './components/Activity/Activity';
 import Gender from './components/Gender/Gender';
 import Parameters from './components/Parameters/Parameters';
-import ReactSwitch from 'react-switch';
 import { ICalories, IFormValues } from './types';
 import calculateCalories from './utils/calculateCalories';
-import useTheme from './hooks/useTheme';
 
 const App = () => {
   const { t } = useTranslation();
