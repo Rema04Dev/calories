@@ -6,13 +6,6 @@ import App from './App';
 
 describe('App', () => {
   it('Renders App', () => {
-    render(<App />);
-    expect(screen.getByTestId('title-2')).toHaveTextContent('Hello');
-  });
-});
-
-describe('App', () => {
-  it('Renders App', () => {
     render(
       <I18nextProvider i18n={i18n}>
         <App />

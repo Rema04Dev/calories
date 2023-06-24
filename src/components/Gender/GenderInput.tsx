@@ -5,11 +5,11 @@ const GenderInput: FC<GenderInputProps> = ({ id, value, label, register }) => {
   return (
     <>
       <input
-        {...register('gender')}
         id={id}
         type="radio"
         value={value}
         required
+        {...register('gender')}
       />
       <label htmlFor={id}>{label}</label>
     </>

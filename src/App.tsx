@@ -97,7 +97,6 @@ const App = () => {
           </form>
           {calories && (
             <section className="counter__result">
-              {/* counter__result--hidden */}
               <h2 className="heading">{t('result.heading')}</h2>
               <ul className="counter__result-list">
                 <li className="counter__result-item">

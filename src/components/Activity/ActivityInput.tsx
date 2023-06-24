@@ -8,6 +8,7 @@ const ActivityInput: FC<IActivityInputProps> = ({
   description,
   register,
 }) => {
+  console.log(register('activity'));
   return (
     <li className="radio">
       <div className="radio__wrapper">
